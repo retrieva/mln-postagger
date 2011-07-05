@@ -1,0 +1,16 @@
+Token("an", 0)
+Token("arrow", 1)
+Token("flies", 2)
+Token("like", 3)
+Token("flies", 4)
+
+Det(0)
+Noun(1)
+Verb(2)
+Prep(3)
+Noun(4)
+
+Succ(0, 1)
+Succ(1, 2)
+Succ(2, 3)
+Succ(3, 4)

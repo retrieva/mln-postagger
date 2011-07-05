@@ -1,0 +1,51 @@
+Token(token, position)
+Succ(position, position)
+
+Det(position)
+Noun(position)
+Adj(position)
+Verb(position)
+Prep(position)
+
+Det(i) ^ Succ(i, j) => Noun(j)
+Det(i) ^ Succ(i, j) => Adj(j)
+
+Noun(i) ^ Succ(i, j) => Noun(j)
+Noun(i) ^ Succ(i, j) => Verb(j)
+Noun(i) ^ Succ(i, j) => Adj(j)
+Noun(i) ^ Succ(i, j) => Prep(j)
+
+Adj(i) ^ Succ(i, j) => Noun(j)
+Adj(i) ^ Succ(i, j) => Adj(j)
+
+Prep(i) ^ Succ(i, j) => Det(j)
+Prep(i) ^ Succ(i, j) => Noun(j)
+Prep(i) ^ Succ(i, j) => Adj(j)
+
+Verb(i) ^ Succ(i, j) => Prep(j)
+Verb(i) ^ Succ(i, j) => Adj(j)
+Verb(i) ^ Succ(i, j) => Det(j)
+Verb(i) ^ Succ(i, j) => Noun(j)
+Verb(i) ^ Succ(i, j) => Verb(j)
+
+
+Token("an", i) =>  Det(i)
+
+Token("time", i) => Noun(i)
+Token("flies", i) => Noun(i)
+Token("arrow", i) => Noun(i)
+
+Token("like", i) => Prep(i)
+
+Token("like", i) => Adj(i)
+
+Token("time", i) => Verb(i)
+Token("flies", i) => Verb(i)
+Token("like", i) => Verb(i)
+
+
+Det(i) => !Noun(i) ^ !Adj(i) ^ !Verb(i) ^ !Prep(i).
+Noun(i) => !Det(i) ^ !Adj(i) ^ !Verb(i) ^ !Prep(i).
+Adj(i) => !Det(i) ^ !Noun(i) ^ !Verb(i) ^ !Prep(i).
+Verb(i) => !Det(i) ^ !Noun(i) ^ !Adj(i) ^ !Prep(i).
+Prep(i) => !Det(i) ^ !Noun(i) ^ !Adj(i) ^ !Verb(i).

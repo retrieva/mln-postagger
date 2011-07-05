@@ -1,0 +1,10 @@
+Token("time", 0)
+Token("flies", 1)
+Token("like", 2)
+Token("an", 3)
+Token("arrow", 4)
+
+Succ(0, 1)
+Succ(1, 2)
+Succ(2, 3)
+Succ(3, 4)

@@ -1,0 +1,7 @@
+Token("flies", 0)
+Token("flies", 1)
+
+Noun(0)
+Verb(1)
+
+Succ(0, 1)

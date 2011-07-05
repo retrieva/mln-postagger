@@ -1,0 +1,13 @@
+Token("time", 0)
+Token("like", 1)
+Token("an", 2)
+Token("arrow", 3)
+
+Noun(0)
+Verb(1)
+Det(2)
+Noun(3)
+
+Succ(0, 1)
+Succ(1, 2)
+Succ(2, 3)

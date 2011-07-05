@@ -1,0 +1,135 @@
+//predicate declarations
+Det(position)
+Prep(position)
+Verb(position)
+Noun(position)
+Adj(position)
+Token(token,position)
+Succ(position,position)
+
+// -0.132592  Det(i) ^ Succ(i,j) => Noun(j)
+-0.132592  !Succ(a1,a2) v !Det(a1) v Noun(a2)
+
+// -0.815077  Det(i) ^ Succ(i,j) => Adj(j)
+-0.815077  !Succ(a1,a2) v !Det(a1) v Adj(a2)
+
+// -1.54631  Noun(i) ^ Succ(i,j) => Noun(j)
+-1.54631  !Succ(a1,a2) v Noun(a2) v !Noun(a1)
+
+// 2.06902  Noun(i) ^ Succ(i,j) => Verb(j)
+2.06902  !Succ(a1,a2) v !Noun(a1) v Verb(a2)
+
+// 0.121513  Noun(i) ^ Succ(i,j) => Adj(j)
+0.121513  !Succ(a1,a2) v !Noun(a1) v Adj(a2)
+
+// -0.975061  Noun(i) ^ Succ(i,j) => Prep(j)
+-0.975061  !Succ(a1,a2) v !Noun(a1) v Prep(a2)
+
+// 0.0776477  Adj(i) ^ Succ(i,j) => Noun(j)
+0.0776477  !Succ(a1,a2) v Noun(a2) v !Adj(a1)
+
+// 0.213469  Adj(i) ^ Succ(i,j) => Adj(j)
+0.213469  !Succ(a1,a2) v Adj(a2) v !Adj(a1)
+
+// -0.528218  Prep(i) ^ Succ(i,j) => Det(j)
+-0.528218  !Succ(a1,a2) v Det(a2) v !Prep(a1)
+
+// 0.800958  Prep(i) ^ Succ(i,j) => Noun(j)
+0.800958  !Succ(a1,a2) v Noun(a2) v !Prep(a1)
+
+// -0.476914  Prep(i) ^ Succ(i,j) => Adj(j)
+-0.476914  !Succ(a1,a2) v Adj(a2) v !Prep(a1)
+
+// 0.97255  Verb(i) ^ Succ(i,j) => Prep(j)
+0.97255  !Succ(a1,a2) v !Verb(a1) v Prep(a2)
+
+// -0.30827  Verb(i) ^ Succ(i,j) => Adj(j)
+-0.30827  !Succ(a1,a2) v Adj(a2) v !Verb(a1)
+
+// -0.487696  Verb(i) ^ Succ(i,j) => Det(j)
+-0.487696  !Succ(a1,a2) v Det(a2) v !Verb(a1)
+
+// -1.08866  Verb(i) ^ Succ(i,j) => Noun(j)
+-1.08866  !Succ(a1,a2) v Noun(a2) v !Verb(a1)
+
+// 0.0699371  Verb(i) ^ Succ(i,j) => Verb(j)
+0.0699371  !Succ(a1,a2) v Verb(a2) v !Verb(a1)
+
+// 2.37404  Token("an",i) => Det(i)
+2.37404  !Token("an",a1) v Det(a1)
+
+// 0       Token("time",i) => Noun(i)
+0       !Token("time",a1) v Noun(a1)
+
+// 0.997007  Token("flies",i) => Noun(i)
+0.997007  !Token("flies",a1) v Noun(a1)
+
+// 0.764592  Token("arrow",i) => Noun(i)
+0.764592  !Token("arrow",a1) v Noun(a1)
+
+// 1.5424  Token("like",i) => Prep(i)
+1.5424  !Token("like",a1) v Prep(a1)
+
+// -0.044427  Token("like",i) => Adj(i)
+-0.044427  !Token("like",a1) v Adj(a1)
+
+// 0       Token("time",i) => Verb(i)
+0       !Token("time",a1) v Verb(a1)
+
+// 0.93726  Token("flies",i) => Verb(i)
+0.93726  !Token("flies",a1) v Verb(a1)
+
+// -0.379292  Token("like",i) => Verb(i)
+-0.379292  !Token("like",a1) v Verb(a1)
+
+// Det(i) => !Noun(i) ^ !Adj(i) ^ !Verb(i) ^ !Prep(i).
+!Det(a1) v !Noun(a1).
+!Det(a1) v !Adj(a1).
+!Det(a1) v !Verb(a1).
+!Det(a1) v !Prep(a1).
+
+// Noun(i) => !Det(i) ^ !Adj(i) ^ !Verb(i) ^ !Prep(i).
+!Det(a1) v !Noun(a1).
+!Noun(a1) v !Adj(a1).
+!Noun(a1) v !Verb(a1).
+!Noun(a1) v !Prep(a1).
+
+// Adj(i) => !Det(i) ^ !Noun(i) ^ !Verb(i) ^ !Prep(i).
+!Det(a1) v !Adj(a1).
+!Noun(a1) v !Adj(a1).
+!Adj(a1) v !Verb(a1).
+!Adj(a1) v !Prep(a1).
+
+// Verb(i) => !Det(i) ^ !Noun(i) ^ !Adj(i) ^ !Prep(i).
+!Det(a1) v !Verb(a1).
+!Noun(a1) v !Verb(a1).
+!Adj(a1) v !Verb(a1).
+!Verb(a1) v !Prep(a1).
+
+// Prep(i) => !Det(i) ^ !Noun(i) ^ !Adj(i) ^ !Verb(i).
+!Det(a1) v !Prep(a1).
+!Noun(a1) v !Prep(a1).
+!Adj(a1) v !Prep(a1).
+!Verb(a1) v !Prep(a1).
+
+// 0       Token(a1,a2)
+0       Token(a1,a2)
+
+// 0       Succ(a1,a2)
+0       Succ(a1,a2)
+
+// 0.0927569  Det(a1)
+0.0927569  Det(a1)
+
+// 1.67639  Noun(a1)
+1.67639  Noun(a1)
+
+// -0.66244  Adj(a1)
+-0.66244  Adj(a1)
+
+// 0.169072  Verb(a1)
+0.169072  Verb(a1)
+
+// -0.176722  Prep(a1)
+-0.176722  Prep(a1)
+
